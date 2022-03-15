@@ -38,6 +38,8 @@ Steiner tree
 
 看起来慢了，实则不然
 
-//
+## Magnetic control of tokamak plasmas through deep reinforcement learning
 
-reinforcement learning
+关键词：
+
+- Tokamak 托卡马克(一种环状大电流的箍缩等离子体实验装置)
