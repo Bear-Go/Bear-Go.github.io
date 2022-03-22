@@ -8,3 +8,45 @@ $\tau$
 ##### 数学公式
 \stackrel{a}{\longrightarrow}
 $\stackrel{a}{\longrightarrow}$
+
+##### 分段函数
+
+F(x)=\left\{
+
+\begin{array}{rcl}
+
+0,&&-\infty<x<0\\
+
+x^4,&&0\le x<1\\
+
+0,&&1\le x<\infty
+
+\end{array}
+
+\right.
+$$
+F(x)=\left\{
+\begin{array}{rcl}
+0,&&-\infty<x<0\\
+x^4,&&0\le x<1\\
+0,&&1\le x<\infty
+\end{array}
+\right.
+$$
+
+##### 波浪号
+
+\sim
+
+$\sim$
+
+##### 小于等于
+
+\le
+
+$\le$
+
+\leqslant
+
+$\leqslant$
+
