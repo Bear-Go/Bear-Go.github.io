@@ -143,7 +143,3 @@ Tips: $Pot(X)$是指$X$的幂集
 
 能尽快找到全局最优解的决定因素有：初始解的选择，邻域的划分以及转移的策略
 
-variable-depth search
-
-KL(Neigh) Kernighan-Lin Variable-Depth Search Algorithm with respect to the neighborhood Neigh
-

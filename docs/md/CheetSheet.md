@@ -5,9 +5,13 @@ $\langle abc \rangle$
 \tau 
 $\tau$
 
-##### 数学公式
+##### 箭头
 \stackrel{a}{\longrightarrow}
 $\stackrel{a}{\longrightarrow}$
+
+\gets
+
+$\gets$
 
 ##### 分段函数
 
