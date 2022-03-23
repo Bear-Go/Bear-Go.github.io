@@ -1,3 +1,5 @@
+[TOC]
+
 ## Relaxing Relationship Queries on Graph Data
 
 ##### Author: Shuxin Li, Gong Cheng, Chengkai Li

@@ -1304,9 +1304,157 @@ a.ty-link {
 }
 
 
-</style><title>MLwithPython</title>
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}
+</style><title>RL-notes</title>
 </head>
 <body class='typora-export os-windows'><div class='typora-export-content'>
-<div id='write'  class=' first-line-indent'><p><span>Introduction: Machine Learning Fundamentals</span></p><p><span>AI vs ML vs NN</span></p><p><span>AI：替代人解决问题</span></p><p><span>ML：根据数据找出规则，而不是直接给出规则</span></p><p><span>NN：层状数据的ML，将层状数据连接</span></p><p><span>DNN：多层状数据的ML，将层状数据连接</span></p><p><span>Introduction to TensorFlow</span></p></div></div>
+<div id='write'  class=' first-line-indent'><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n2"><a class="md-toc-inner" href="#1-导论">1 导论</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n3"><a class="md-toc-inner" href="#11-强化学习">1.1 强化学习</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n23"><a class="md-toc-inner" href="#12-示例">1.2 示例</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n29"><a class="md-toc-inner" href="#13-强化学习要素">1.3 强化学习要素</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n36"><a class="md-toc-inner" href="#14-局限性与适用范围">1.4 局限性与适用范围</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n39"><a class="md-toc-inner" href="#15-扩展实例井字棋">1.5 扩展实例：井字棋</a></span></p></div><h5 id='1-导论'><span>1 导论</span></h5><h6 id='11-强化学习'><span>1.1 强化学习</span></h6><p><span>强化学习问题：</span></p><ul><li><span>形式化细节见第3章</span></li><li><strong><span>基本思想</span></strong><span>：就是在智能体为了实现目标而不断与环境产生交互过程中，抓住智能体所面对的真实问题的主要方面.</span></li><li><span>马尔可夫决策过程</span></li></ul><p><strong><span>有监督学习vs无监督学习</span></strong><span>：监督的含义是指数据有无标注</span></p><p><strong><span>强化学习vs有监督学习</span></strong><span>：有监督学习反映的是一种推断、泛化的学习方式；而强化学习反映的是一种从交互中学习的方式，在一个未知领域，从自身的经验中学习是必要的</span></p><p><strong><span>强化学习vs无监督学习</span></strong><span>：无监督学习的目的是寻找隐含结构；而强化学习的目的是最大化收益</span></p><p><span>强化学习的关键特征：</span></p><ul><li><span>“试探”与“开发”之间的折中权衡</span></li><li><span>明确考虑了目标导向的智能体与不确定的环境交互这整个问题</span></li><li><span>与其他工程和科学学科之间实质性的、富有成果的互动</span></li></ul><h6 id='12-示例'><span>1.2 示例</span></h6><p><span>国际象棋</span></p><p><span>自适应石油控制器</span></p><p><span>羚羊幼崽学会奔跑</span></p><p><span>...</span></p><p><span>关键词：交互，智能体的动作会影响未来环境的状态，无法完全预测动作的影响</span></p><h6 id='13-强化学习要素'><span>1.3 强化学习要素</span></h6><p><span>智能体、环境、</span><strong><span>策略</span></strong><span>、</span><strong><span>收益信号</span></strong><span>、</span><strong><span>价值函数</span></strong><span>以及（可选）</span><strong><span>对环境建立的模型</span></strong></p><p><strong><span>策略</span></strong><span>定义了学习智能体在特定时间的行为方式，是环境状态到动作的映射.它对应于心理学中被称为“刺激-反应”的规则或关联关系.可能是简单的函数或查询表，也可能是复杂的搜索.一般来说，策略可能是环境所在状态和智能体所采取的动作的随机函数.</span></p><p><strong><span>收益信号</span></strong><span>定义了强化学习问题中的目标.在生物系统中，收益与痛苦或愉悦的体验类似.</span></p><p><span>收益信号表明了在短时间内什么是好的，而</span><strong><span>价值函数</span></strong><span>则表示了从长远的角度看什么是好的.简单地说，一个状态的价值是一个智能体从这个状态开始，对将来累积的总收益的期望.</span></p><p><span>我们寻求能带来最高价值而不是最高收益的状态的动作，因为这些动作从长远来看会为我们带来最大的累积收益.不幸的是，确定价值要比确定收益难得多.收益基本上是由环境直接给予的，但是价值必须综合评估，并根据</span><strong><span>智能体在整个过程中观察到的收益序列</span></strong><span>重新评估.事实上，价值评估方法才是几乎所有强化学习算法中最重要的组成部分.</span></p><p><strong><span>对环境建立的模型</span></strong><span>，是一种对环境的反应模式的模拟，或者更一般地说，它允许对外部环境地行为进行推断.环境模型会被用来做</span><strong><span>规划</span></strong><span>.规划，就是在真正经历之前，先考虑未来可能发生的各种情境从而预先决定采取何种动作.使用环境模型和规划来解决强化学习问题的方法被称为</span><strong><span>有模型</span></strong><span>的方法.</span></p><h6 id='14-局限性与适用范围'><span>1.4 局限性与适用范围</span></h6><p><span>本书的关注点在于根据给定状态信号来决定采取什么动作</span></p><p><span>本书中讨论的大多数强化学习方法必须建立在对价值函数的估计上.但是这并不是解决强化学习问题的必由之路.比如，一些优化方法，遗传算法、遗传规划、模拟退火算法以及其他一些方法，都可以用来解决强化学习问题，而不用显示地计算价值函数，这些方法采取大量静态策略.我们称其</span><strong><span>进化方法</span></strong><span>，采用这类方法的场景一般为，策略空间充分小、可以很好地结构化以找到好的策略，有充分的时间来搜索，智能体不能精确感知环境状态.</span></p><h6 id='15-扩展实例井字棋'><span>1.5 扩展实例：井字棋</span></h6><p><span>经典算法：</span></p><ul><li><span>“极大极小”算法</span></li><li><span>动态规划</span></li><li><span>进化方法</span></li></ul><p><span>使用价值函数的方法.</span><strong><span>状态的价值定义为当前状态取胜的概率</span></strong><span>.假设我们下的是X，那么在所有有三个连续的X的状态下获胜的概率是1，同样，当出现有三个连续的O的状态，或者说是棋盘已经被下满了时，获胜概率是0.所有其他状态的初始价值为0.5，表示我们猜测会有50%的获胜机会.</span></p><p><span>大多数时候，我们贪心地行动，选择价值最高的动作，也就是说，选择获胜概率最高的动作.然而，偶尔我们会从其他动作中随机选择.这些被称为试探性走棋行动.</span></p><p><span>在博弈的过程中，我们会不断改变自身所处的状态的价值.为了做到这一点，我们将在贪心动作之后得到的状态所对应的价值“回溯更新”到动作之前的状态上.更准确地说，我们是对早先的状态的价值进行调整，使其更接近于后面的状态所对应的价值.这可以通过将早先的状态的价值向后面的状态的价值方向移动一个增量来完成.更新过程可以写成，</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n51" cid="n51" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="1" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" width="full" style="min-width: 45.813ex; position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="2.262ex" role="img" focusable="false" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex; min-width: 45.813ex;"><defs><path id="MJX-92-TEX-I-1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path><path id="MJX-92-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-92-TEX-I-1D446" d="M308 24Q367 24 416 76T466 197Q466 260 414 284Q308 311 278 321T236 341Q176 383 176 462Q176 523 208 573T273 648Q302 673 343 688T407 704H418H425Q521 704 564 640Q565 640 577 653T603 682T623 704Q624 704 627 704T632 705Q645 705 645 698T617 577T585 459T569 456Q549 456 549 465Q549 471 550 475Q550 478 551 494T553 520Q553 554 544 579T526 616T501 641Q465 662 419 662Q362 662 313 616T263 510Q263 480 278 458T319 427Q323 425 389 408T456 390Q490 379 522 342T554 242Q554 216 546 186Q541 164 528 137T492 78T426 18T332 -20Q320 -22 298 -22Q199 -22 144 33L134 44L106 13Q83 -14 78 -18T65 -22Q52 -22 52 -14Q52 -11 110 221Q112 227 130 227H143Q149 221 149 216Q149 214 148 207T144 186T142 153Q144 114 160 87T203 47T255 29T308 24Z"></path><path id="MJX-92-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-92-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-92-TEX-N-2190" d="M944 261T944 250T929 230H165Q167 228 182 216T211 189T244 152T277 96T303 25Q308 7 308 0Q308 -11 288 -11Q281 -11 278 -11T272 -7T267 2T263 21Q245 94 195 151T73 236Q58 242 55 247Q55 254 59 257T73 264Q121 283 158 314T215 375T247 434T264 480L267 497Q269 503 270 505T275 509T288 511Q308 511 308 500Q308 493 303 475Q293 438 278 406T246 352T215 315T185 287T165 270H929Q944 261 944 250Z"></path><path id="MJX-92-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-92-TEX-I-1D6FC" d="M34 156Q34 270 120 356T309 442Q379 442 421 402T478 304Q484 275 485 237V208Q534 282 560 374Q564 388 566 390T582 393Q603 393 603 385Q603 376 594 346T558 261T497 161L486 147L487 123Q489 67 495 47T514 26Q528 28 540 37T557 60Q559 67 562 68T577 70Q597 70 597 62Q597 56 591 43Q579 19 556 5T512 -10H505Q438 -10 414 62L411 69L400 61Q390 53 370 41T325 18T267 -2T203 -11Q124 -11 79 39T34 156ZM208 26Q257 26 306 47T379 90L403 112Q401 255 396 290Q382 405 304 405Q235 405 183 332Q156 292 139 224T121 120Q121 71 146 49T208 26Z"></path><path id="MJX-92-TEX-N-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path id="MJX-92-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-92-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-92-TEX-N-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(0.022398,-0.022398) translate(0, -750)"><g data-mml-node="math"><g data-mml-node="mtable" transform="translate(2078,0) translate(-2078,0)"><g transform="translate(0 750) matrix(1 0 0 -1 0 0) scale(44.65)"><svg data-table="true" preserveAspectRatio="xMidYMid" viewBox="8046.6 -750 1 1000"><g transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="mlabeledtr"><g data-mml-node="mtd"><g data-mml-node="mi"><use data-c="1D449" xlink:href="#MJX-92-TEX-I-1D449"></use></g><g data-mml-node="mo" transform="translate(769,0)"><use data-c="28" xlink:href="#MJX-92-TEX-N-28"></use></g><g data-mml-node="msub" transform="translate(1158,0)"><g data-mml-node="mi"><use data-c="1D446" xlink:href="#MJX-92-TEX-I-1D446"></use></g><g data-mml-node="mi" transform="translate(646,-150) scale(0.707)"><use data-c="1D461" xlink:href="#MJX-92-TEX-I-1D461"></use></g></g><g data-mml-node="mo" transform="translate(2109.3,0)"><use data-c="29" xlink:href="#MJX-92-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(2776,0)"><use data-c="2190" xlink:href="#MJX-92-TEX-N-2190"></use></g><g data-mml-node="mi" transform="translate(4053.8,0)"><use data-c="1D449" xlink:href="#MJX-92-TEX-I-1D449"></use></g><g data-mml-node="mo" transform="translate(4822.8,0)"><use data-c="28" xlink:href="#MJX-92-TEX-N-28"></use></g><g data-mml-node="msub" transform="translate(5211.8,0)"><g data-mml-node="mi"><use data-c="1D446" xlink:href="#MJX-92-TEX-I-1D446"></use></g><g data-mml-node="mi" transform="translate(646,-150) scale(0.707)"><use data-c="1D461" xlink:href="#MJX-92-TEX-I-1D461"></use></g></g><g data-mml-node="mo" transform="translate(6163.1,0)"><use data-c="29" xlink:href="#MJX-92-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(6774.3,0)"><use data-c="2B" xlink:href="#MJX-92-TEX-N-2B"></use></g><g data-mml-node="mi" transform="translate(7774.5,0)"><use data-c="1D6FC" xlink:href="#MJX-92-TEX-I-1D6FC"></use></g><g data-mml-node="mo" transform="translate(8414.5,0)"><use data-c="5B" xlink:href="#MJX-92-TEX-N-5B"></use></g><g data-mml-node="mi" transform="translate(8692.5,0)"><use data-c="1D449" xlink:href="#MJX-92-TEX-I-1D449"></use></g><g data-mml-node="mo" transform="translate(9461.5,0)"><use data-c="28" xlink:href="#MJX-92-TEX-N-28"></use></g><g data-mml-node="msub" transform="translate(9850.5,0)"><g data-mml-node="mi"><use data-c="1D446" xlink:href="#MJX-92-TEX-I-1D446"></use></g><g data-mml-node="TeXAtom" transform="translate(646,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D461" xlink:href="#MJX-92-TEX-I-1D461"></use></g><g data-mml-node="mo" transform="translate(361,0)"><use data-c="2B" xlink:href="#MJX-92-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(1139,0)"><use data-c="31" xlink:href="#MJX-92-TEX-N-31"></use></g></g></g><g data-mml-node="mo" transform="translate(11705.5,0)"><use data-c="29" xlink:href="#MJX-92-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(12316.7,0)"><use data-c="2212" xlink:href="#MJX-92-TEX-N-2212"></use></g><g data-mml-node="mi" transform="translate(13316.9,0)"><use data-c="1D449" xlink:href="#MJX-92-TEX-I-1D449"></use></g><g data-mml-node="mo" transform="translate(14085.9,0)"><use data-c="28" xlink:href="#MJX-92-TEX-N-28"></use></g><g data-mml-node="msub" transform="translate(14474.9,0)"><g data-mml-node="mi"><use data-c="1D446" xlink:href="#MJX-92-TEX-I-1D446"></use></g><g data-mml-node="mi" transform="translate(646,-150) scale(0.707)"><use data-c="1D461" xlink:href="#MJX-92-TEX-I-1D461"></use></g></g><g data-mml-node="mo" transform="translate(15426.2,0)"><use data-c="29" xlink:href="#MJX-92-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(15815.2,0)"><use data-c="5D" xlink:href="#MJX-92-TEX-N-5D"></use></g></g></g></g></svg><svg data-labels="true" preserveAspectRatio="xMaxYMid" viewBox="1278 -750 1 1000"><g data-labels="true" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="mtd" id="mjx-eqn:1"><g data-mml-node="mtext"><use data-c="28" xlink:href="#MJX-92-TEX-N-28"></use><use data-c="31" xlink:href="#MJX-92-TEX-N-31" transform="translate(389,0)"></use><use data-c="29" xlink:href="#MJX-92-TEX-N-29" transform="translate(889,0)"></use></g></g></g></svg></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable displaystyle="true"><mlabeledtr><mtd><mtext>(1)</mtext></mtd><mtd><mi>V</mi><mo stretchy="false">(</mo><msub><mi>S</mi><mi>t</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">←</mo><mi>V</mi><mo stretchy="false">(</mo><msub><mi>S</mi><mi>t</mi></msub><mo stretchy="false">)</mo><mo>+</mo><mi>α</mi><mo stretchy="false">[</mo><mi>V</mi><mo stretchy="false">(</mo><msub><mi>S</mi><mrow data-mjx-texclass="ORD"><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo><mo>−</mo><mi>V</mi><mo stretchy="false">(</mo><msub><mi>S</mi><mi>t</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mtd></mlabeledtr></mtable></math></mjx-assistive-mml></mjx-container></div></div><p><span>其中，</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.448ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 640 453" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-94-TEX-I-1D6FC" d="M34 156Q34 270 120 356T309 442Q379 442 421 402T478 304Q484 275 485 237V208Q534 282 560 374Q564 388 566 390T582 393Q603 393 603 385Q603 376 594 346T558 261T497 161L486 147L487 123Q489 67 495 47T514 26Q528 28 540 37T557 60Q559 67 562 68T577 70Q597 70 597 62Q597 56 591 43Q579 19 556 5T512 -10H505Q438 -10 414 62L411 69L400 61Q390 53 370 41T325 18T267 -2T203 -11Q124 -11 79 39T34 156ZM208 26Q257 26 306 47T379 90L403 112Q401 255 396 290Q382 405 304 405Q235 405 183 332Q156 292 139 224T121 120Q121 71 146 49T208 26Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D6FC" xlink:href="#MJX-94-TEX-I-1D6FC"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>α</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">\alpha</script><span>是一个小的正分数，称为步长参数，其会影响学习速率.这个更新规则是</span><strong><span>时序差分</span></strong><span>的一个例子.</span></p><p><span>上述方法在这个任务上表现得很好，它会收敛于最优策略下每个状态下得真正获胜概率.如果步长参数没有随时间得推移降低到零，那么这个玩家也能很好地对抗缓慢改变他们策略的对手.</span></p><p><span>进化方法vs基于价值函数的方法：进化方法每一次策略的改变都基于很多次博弈</span></p><p>&nbsp;</p></div></div>
 </body>
 </html>
