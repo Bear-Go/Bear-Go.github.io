@@ -143,3 +143,10 @@ Tips: $Pot(X)$是指$X$的幂集
 
 能尽快找到全局最优解的决定因素有：初始解的选择，邻域的划分以及转移的策略
 
+##### 3.7
+
+Linear Programming (LP) is an optimization problem that can be solved in  polynomial time, while Oil-linear programming (O/l-LP) and integer linear  programming (IP) are NP-hard. 
+
+This approach is called relaxation  because one relaxes the requirement of finding an optimal solution over {O, I}  or over positive integers by searching for an optimal solution over reals. 
+
+(1) Reduction  Express a given instance x of an optimization problem U as an input  instance I(x) of O/l-LP or IP.  (2) Relaxation  Consider I(x) as an instance of LP and compute an optimal solution 0: to  I(x) by an algorithm for linear programming.  (3) Solving the original problem  Use 0: to either compute an optimal solution for the original problem, or  to find a high-quality feasible solution for the original problem.
