@@ -2,7 +2,7 @@
 
 ##### Preface
 
-操作系统三大专题：虚拟性(virtualization)，并发性(concurrency)，持久性(persistence)
+操作系统三大专题：**虚拟性**(virtualization)，**并发性**(concurrency)，**持久性**(persistence)
 
 ##### 1 Dialogue
 
@@ -41,6 +41,261 @@ os历史：
 多道程序时代：内存保护，同时载入很多程序
 
 当今：unix
+
+##### 3 关于虚拟化的对话
+
+虚拟化就是把一个资源虚拟成多个资源，让每个应用都以为自己在独占资源
+
+##### 4 抽象：进程
+
+进程的非正式定义：进程就是运行中的程序
+
+> 关键问题：如何提供有许多CPU的假象？
+
+通过让一个进程只运行一个时间片，然后切换到其他进程。
+
+要实现CPU的虚拟化，操作系统就需要一些低级机制以及一些高级智能.机制(mechanism)就是一些低级方法或协议，实现了所需的功能。比如上下文切换(context switch)这种分时机制。
+
+> 提示：使用时分共享(和空分共享)
+
+在这些机制之上，操作系统有一些智能以策略(policy)的形式存在。策略就是在操作系统内做出某种决定的算法。比如，给定一组可能的程序要在CPU上运行，操作系统应该运行哪个程序？操作系统中的调度策略(scheduling policy)会做出这样的决定，可能利用历史信息、工作负载知识以及性能指标来做出决定。
+
+4.1 抽象进程
+
+操作系统为正在运行的程序提供的抽象，就是所谓的进程(process)。为了理解构成进程的是什么，我们必须理解它的机器状态：程序在运行时可以读取或更新的内容。
+
+- 内存（指令以及读取、写入的数据都在内存中）
+- 寄存器（程序计数器PC、栈指针、帧指针等）
+- 持久存储设备（当前打开的文件列表）
+
+> 提示：分离策略与机制
+>
+> 机制为系统的how问题提供答案，策略为系统的which问题提供答案
+>
+> 将两者分开可以轻松得改变策略、而不必重新考虑机制，因此这是一种模块化的形式，一种通用的软件设计原则。
+
+4.2 进程API
+
+操作系统所有进程相关的接口必须包含哪些内容：
+
+- 创建(create)：创建一些新进程的方法
+- 销毁(destory)：强制销毁进程的接口
+- 等待(wait)：等待进程停止运行
+- 其他控制(miscellaneous control)：例如，暂停进程，然后恢复
+- 状态：获得有关进程的状态信息，例如运行了多长时间，或者处于什么状态
+
+4.3 进程创建：更多细节
+
+问题：程序如何转化为进程？具体来说，操作系统如何启动并运行一个程序？进程创建实际如何进行？
+
+必须做的第一件事是将代码和所有静态数据（例如初始化变量）加载(load)到内存中，加载到进程的地址空间中。程序最初以某种可执行格式驻留在磁盘上(disk)，因此，加载的过程，需要操作系统从磁盘读取这些字节，然后将它们放在内存中的某处。
+
+将代码和静态数据加载到内存后，操作系统在运行此进程之前还需要执行其他一些操作。必须为程序的运行时栈(run-time stack 或 stack)分配一些内存。操作系统分配这些内存，并提供给进程。操作系统也可能会用参数初始化栈。具体来说，它会将参数填入main()函数，即argc和argv数组。
+
+操作系统也可能为程序的堆(heap)分配一些内存。
+
+操作系统还将执行一些其他初始化任务，特别是与输入/输出(I/O)相关的任务。例如，在UNIX系统中，默认情况下每个进程都有3个打开的文件描述符(file descriptor)，用于标准输入、输出和错误。这些描述符让程序轻松读取来自终端的输入以及打印输出到屏幕。
+
+然后操作系统还有最后一项任务：启动程序，在入口处运行，即main()。通过跳转到main()例程，操作系统将CPU的控制权转移到新创建的进程中。
+
+4.4 进程状态
+
+进程在给定时间可能处于的不同状态(state)：
+
+- 运行(running)：进程正在处理器上运行
+- 就绪(ready)：在就绪状态下，进程已准备好运行，但由于某种原因，操作系统选择不在此时运行
+- 阻塞(blocked)：在阻塞状态下，一个进程执行了某种操作，直到发生其他事件时才会准备运行。一个常见的例子是，进程向磁盘发起I/O请求
+
+将这些状态映射到一个图上
+
+![4.2](OSTEP-notes.assets/4.2.png)
+
+4.5 数据结构
+
+操作系统有一些关键的数据结构来跟踪各种相关的信息。例如，为了跟踪每个进程的状态，操作系统可能会为所有就绪的进程保留某种进程列表(process list)，以及跟踪当前正在运行的进程的一些附加信息。操作系统还必须以某种方式跟踪被阻塞的进程。
+
+查看xv6内核的进程结构。可以看到操作系统追踪的一些重要信息，比如寄存器上下文。还可以看到，除了运行、就绪和阻塞之外，还有一些进程可以处于的状态，比如初始(initial)状态——表示进程在创建时处于的状态，最终(final)状态(在基于UNIX的系统中，这称为僵尸(zombie)状态)表示——表示进程已退出但尚未处理的状态。
+
+> 补充：数据结构——进程列表
+>
+> 存储关于进程的信息的个体结构称为进程控制块(Process Control Block，PCB)
+
+##### 5 插叙：进程API
+
+本章将介绍更多系统实践方面的内容。
+
+> 关键问题：如何创建并控制进程？
+
+UNIX系统采用了一种非常有趣的创建新进程的方式，即一对系统调用：fork()和exec()，进程还可以通过第三个系统调用wait()，来等待其创建的子进程执行完成。
+
+5.1 fork()系统调用
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int main(int argc, char *argv[]) {
+    printf("hello world (pid:%d)\n", (int) getpid());
+    int rc = fork();
+    if (rc < 0) {
+        // fork failed; exit
+        fprintf(stderr, "fork failed\n");
+        exit(1);
+    } else if (rc == 0) {
+        // child (new process)
+        printf("hello, I am child (pid:%d)\n", (int) getpid());
+    } else {
+        // parent goes down this path (original process)
+        printf("hello, I am parent of %d (pid:%d)\n",
+	       rc, (int) getpid());
+    }
+    return 0;
+}
+```
+
+进程调用fork()系统调用时，新创建的进程几乎与调用进程完全一样，对操作系统来说，这时看起来有两个完全一样的程序在运行，**并都从fork()系统调用中返回**，但是从fork()返回的值是不同的。父进程获得的返回值是新创建子进程的PID，而子进程获得的返回值是0。
+
+5.2 wait()系统调用
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
+int main(int argc, char *argv[]) {
+    printf("hello world (pid:%d)\n", (int) getpid());
+    int rc = fork();
+    if (rc < 0) {
+        // fork failed; exit
+        fprintf(stderr, "fork failed\n");
+        exit(1);
+    } else if (rc == 0) {
+        // child (new process)
+        printf("hello, I am child (pid:%d)\n", (int) getpid());
+	sleep(1);
+    } else {
+        // parent goes down this path (original process)
+        int wc = wait(NULL);
+        printf("hello, I am parent of %d (wc:%d) (pid:%d)\n",
+	       rc, wc, (int) getpid());
+    }
+    return 0;
+}
+```
+
+父进程调用wait()，延迟自己的执行，直到子进程执行完毕。当子进程结束时，wait()才返回父进程。
+
+5.3 最后是exec()系统调用
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/wait.h>
+
+int main(int argc, char *argv[]) {
+    printf("hello world (pid:%d)\n", (int) getpid());
+    int rc = fork();
+    if (rc < 0) {
+        // fork failed; exit
+        fprintf(stderr, "fork failed\n");
+        exit(1);
+    } else if (rc == 0) {
+        // child (new process)
+        printf("hello, I am child (pid:%d)\n", (int) getpid());
+        char *myargs[3];
+        myargs[0] = strdup("wc");   // program: "wc" (word count)
+        myargs[1] = strdup("p3.c"); // argument: file to count
+        myargs[2] = NULL;           // marks end of array
+        execvp(myargs[0], myargs);  // runs word count
+        printf("this shouldn't print out");
+    } else {
+        // parent goes down this path (original process)
+        int wc = wait(NULL);
+        printf("hello, I am parent of %d (wc:%d) (pid:%d)\n",
+	       rc, wc, (int) getpid());
+    }
+    return 0;
+}
+```
+
+这个系统调用可以让子进程执行与父进程不同的程序。在上述例子中，子进程调用execvp()来运行字符计数程序wc。
+
+给定可执行程序的名称（如wc）及需要的参数后，exec()会从可执行程序中加载代码和静态数据，并用它覆写自己的代码段（以及静态数据），堆、栈及其他内存空间也会被重新初始化。然后操作系统就执行该程序，将参数通过argv传递给该进程。因此，它并没有创建新进程，而是直接将当前运行的程序替换为不同的运行程序（wc）。子进程执行exec()之后，几乎就像原程序从未运行过一样。对exec()的成功调用永远不会返回。
+
+5.4 为什么这样设计API
+
+事实证明，这种分离fork()及exec()的做法在构建UNIX shell的时候非常有用，因为这给了shell在fork之后exec之前运行代码的机会，这些代码可以在运行新程序前改变环境，从而让一系列有趣的功能很容易实现。
+
+> 提示：重要的是做对事(LAMPSON定律)
+>
+> 做对事。抽象和简化都不能替代做对事。
+
+fork()和exec()的分离，让shell可以很方便地实现很多有用的功能。
+
+比如重定向，
+
+```shell
+prompt> wc p3.c > newfile.txt
+```
+
+当shell完成子进程的创建后，shell在调用exec()之前先关闭了标准输出，打开了文件newfile.txt。
+
+以下展示了这样做的一个程序，
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <fcntl.h>
+#include <assert.h>
+#include <sys/wait.h>
+
+int main(int argc, char *argv[]) {
+    int rc = fork();
+    if (rc < 0) {
+        // fork failed; exit
+        fprintf(stderr, "fork failed\n");
+        exit(1);
+    } else if (rc == 0) {
+	// child: redirect standard output to a file
+	close(STDOUT_FILENO); 
+	open("./p4.output", O_CREAT|O_WRONLY|O_TRUNC, S_IRWXU);
+
+	// now exec "wc"...
+        char *myargs[3];
+        myargs[0] = strdup("wc");   // program: "wc" (word count)
+        myargs[1] = strdup("p4.c"); // argument: file to count
+        myargs[2] = NULL;           // marks end of array
+        execvp(myargs[0], myargs);  // runs word count
+    } else {
+        // parent goes down this path (original process)
+        int wc = wait(NULL);
+	assert(wc >= 0);
+    }
+    return 0;
+}
+```
+
+UNIX管道也是用类似的方式实现的，但用的是pipe()系统调用。
+
+在这种情况下，一个进程的输出被链接到了一个内核管道（pipe）上（队列），另一个进程的输入也被连接到了同一个管道上。因此，前一个进程的输出无缝地作为后一个进程的输入，许多命令可以用这种方式串联谁一起，共同完成某项任务。比如通过将grep、wc命令用管道连接可以完成从一个文件中查找某个词，并统计其出现次数的功能：grep -o foo file | wc -l。
+
+> 补充：RTFM——阅读man手册
+>
+> 花时间阅读man手册是系统程序员成长的必经之路。手册里有许多有用的隐藏彩蛋。
+
+5.5 其他API
+
+除了以上提到的，在UNIX中还有其他许多与进程交互的方式。比如通过kill()系统调用向进程发送信号（signal），包括要求进程睡眠、终止或其他有用的指令。
+
+##### 13
+
+##### 14
 
 ##### 25 Dialogue on Concurrency
 
