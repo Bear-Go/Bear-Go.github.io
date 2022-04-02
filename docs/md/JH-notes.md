@@ -143,10 +143,46 @@ Tips: $Pot(X)$是指$X$的幂集
 
 能尽快找到全局最优解的决定因素有：初始解的选择，邻域的划分以及转移的策略
 
-##### 3.7
+##### 3.7 松弛算法
 
 Linear Programming (LP) is an optimization problem that can be solved in  polynomial time, while Oil-linear programming (O/l-LP) and integer linear  programming (IP) are NP-hard. 
 
 This approach is called relaxation  because one relaxes the requirement of finding an optimal solution over {O, I}  or over positive integers by searching for an optimal solution over reals. 
 
 (1) Reduction  Express a given instance x of an optimization problem U as an input  instance I(x) of O/l-LP or IP.  (2) Relaxation  Consider I(x) as an instance of LP and compute an optimal solution 0: to  I(x) by an algorithm for linear programming.  (3) Solving the original problem  Use 0: to either compute an optimal solution for the original problem, or  to find a high-quality feasible solution for the original problem.
+
+#### 4 近似算法
+
+##### 4.1 介绍
+
+- 给出优化问题逼近概念的基本原理，包括根据多项式时间逼近性对优化问题进行分类
+- 展示一些近似算法的透明示例，以展示设计高效近似算法的成功技术
+- 给出证明多项式时间不可近似性下界的方法的一些基本思想
+
+##### 4.2 基础
+
+我们从近似算法的基本定义开始。 通俗地说，优化问题的近似算法是一种提供可行解的算法，其质量与最优解的质量相差不大。
+
+**几个定义**
+
+relative error
+
+approximation ratio
+
+δ-approximation algorithm
+
+f(n)-approximation algorithm
+
+(GMS)GREEDY MAKESPAN SCHEDULE
+
+An algorithm A is called a polynomial-time approximation  scheme (PTAS) for U, if, for every input pair (x, c) E L [ x IR +, A computes  a feasible solution A(x) with a relative error at most c, and TimeA(x,c- 1 )  can be bounded by afunction3 that is polynomial in Ixl. If TimeA(x,c 1 ) can  be bounded by a function that is polynomial in both Ixl and c- 1 , then we say  that A is a fully polynomial-time approximation scheme (FPTAS) for  U. 
+
+**优化问题的分类**
+
+近似的稳定性
+
+随笔：
+
+强化学习的结果都不“喜欢”主动进攻
+
+根据人反应的方式，比如利用神经网络来做“直觉”系统，用强化学习来做“思考”系统
