@@ -8,6 +8,11 @@ $\langle abc \rangle$
 $\tau$
 
 ##### 箭头
+
+\iff
+
+$\iff$
+
 \stackrel{a}{\longrightarrow}
 $\stackrel{a}{\longrightarrow}$
 

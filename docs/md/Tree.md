@@ -21,18 +21,4 @@ softplus
 
 sigmoid
 
-##### Methods
-
-###### Tokamak à Configuration Variable
-
-###### Tokamak simulator
-
-###### Specific settings for the droplets
-
-###### Plasma parameter variation
-
-###### Sensing and actuation
-
-###### Neural-network architecture
-
-###### Learning loop
+###### 
