@@ -7,6 +7,10 @@ $\langle abc \rangle$
 \tau 
 $\tau$
 
+\rho
+
+$\rho$
+
 ##### 箭头
 
 \iff
@@ -60,4 +64,10 @@ $\le$
 \leqslant
 
 $\leqslant$
+
+##### 保留字
+
+\textbackslash
+
+$\textbackslash$
 
