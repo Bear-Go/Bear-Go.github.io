@@ -175,14 +175,6 @@ f(n)-approximation algorithm
 
 (GMS)GREEDY MAKESPAN SCHEDULE
 
-An algorithm A is called a polynomial-time approximation  scheme (PTAS) for U, if, for every input pair (x, c) E L [ x IR +, A computes  a feasible solution A(x) with a relative error at most c, and TimeA(x,c- 1 )  can be bounded by afunction3 that is polynomial in Ixl. If TimeA(x,c 1 ) can  be bounded by a function that is polynomial in both Ixl and c- 1 , then we say  that A is a fully polynomial-time approximation scheme (FPTAS) for  U. 
-
 **优化问题的分类**
 
 近似的稳定性
-
-随笔：
-
-强化学习的结果都不“喜欢”主动进攻
-
-根据人反应的方式，比如利用神经网络来做“直觉”系统，用强化学习来做“思考”系统

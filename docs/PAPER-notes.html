@@ -207,7 +207,7 @@ mark .md-meta { color: rgb(0, 0, 0); }
     --title-font: var(--monospace); /*标题字体*/
     --text-line-height: 1.6; /*正文行间距*/
     --code-block-line-height: 1.6; /*代码块行间距*/
-    --p-spacing: 0.6rem; /*段间距*/
+    --p-spacing: 0.8rem; /*段间距*/
 }/*
  * Copyright (C) 2018 Drake, Inc.
  *
@@ -1304,9 +1304,157 @@ a.ty-link {
 }
 
 
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}
 </style><title>PAPER-notes</title>
 </head>
 <body class='typora-export os-windows'><div class='typora-export-content'>
-<div id='write'  class=' first-line-indent'><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n2"><a class="md-toc-inner" href="#relaxing-relationship-queries-on-graph-data">Relaxing Relationship Queries on Graph Data</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n3"><a class="md-toc-inner" href="#author-shuxin-li-gong-cheng-chengkai-li">Author: Shuxin Li, Gong Cheng, Chengkai Li</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n22"><a class="md-toc-inner" href="#magnetic-control-of-tokamak-plasmas-through-deep-reinforcement-learning">Magnetic control of tokamak plasmas through deep reinforcement learning</a></span></p></div><h2 id='relaxing-relationship-queries-on-graph-data'><span>Relaxing Relationship Queries on Graph Data</span></h2><h5 id='author-shuxin-li-gong-cheng-chengkai-li'><span>Author: Shuxin Li, Gong Cheng, Chengkai Li</span></h5><p><span>选择直径为参数划分，这是一个减小问题空间的通用方法</span></p><p><span>解决的问题是：现有的算法在查询实体很远时，会返回空结果，而新的方法可以减少失败的发生并且提供替代结果</span></p><p><span>怎么解决的：于从原始失败查询中删除最少数量的实体，以形成最⼤成功的子查询，从⽽最⼤限度地减少因松弛造成的结果质量损失</span></p><p><span>结果是什么：我们提出了一种最佳优先搜索算法，一种基于度数，另一种基于距离</span></p><p><span>该算法的意义在于，有现实效益，但是带来的后果是会频繁出现查询失败</span></p><p><span>平衡搜索性能与搜索质量</span></p><p><span>一种直接的方法是把约束扩大，表现不是很好</span></p><p><span>令一种方法是将原语义搜索的范围松弛，然后返回一个替代结果</span></p><p><span>Steiner tree</span></p><p><span>最小斯坦纳树允许在给定点外增加额外的点，使生成的最短网络开销最小</span></p><p><span>与现有的斯坦纳树算法的区别</span></p><p><span>第一个直观的方法：按顺序遍历子查询，对每个子查询使用现有的SA算法</span></p><p><span>第二个直观的方法：计算每对查询实体之间的距离，判定的条件，每对查询实体之间的距离不大于直径约束，这是必要条件，但不够充分</span></p><p><span>基本想法：对于D是偶数...</span></p><p><span>对于D是奇数...</span></p><p><span>算法优化</span></p><p><span>相比于原算法对整张图中每个点至多遍历一次，新算法独立地跑|Q|次</span></p><p><span>看起来慢了，实则不然</span></p><h2 id='magnetic-control-of-tokamak-plasmas-through-deep-reinforcement-learning'><span>Magnetic control of tokamak plasmas through deep reinforcement learning</span></h2><p><span>关键词：</span></p><ul><li><span>Tokamak 托卡马克(一种环状大电流的箍缩等离子体实验装置)</span></li></ul><p><span>Insight:</span></p><ul><li><span>调度问题</span></li></ul></div></div>
+<div id='write'  class=' first-line-indent'><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n2"><a class="md-toc-inner" href="#relaxing-relationship-queries-on-graph-data">Relaxing Relationship Queries on Graph Data</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n3"><a class="md-toc-inner" href="#author-shuxin-li-gong-cheng-chengkai-li">Author: Shuxin Li, Gong Cheng, Chengkai Li</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n22"><a class="md-toc-inner" href="#magnetic-control-of-tokamak-plasmas-through-deep-reinforcement-learning">Magnetic control of tokamak plasmas through deep reinforcement learning</a></span></p></div><h2 id='relaxing-relationship-queries-on-graph-data'><span>Relaxing Relationship Queries on Graph Data</span></h2><h5 id='author-shuxin-li-gong-cheng-chengkai-li'><span>Author: Shuxin Li, Gong Cheng, Chengkai Li</span></h5><p><span>选择直径为参数划分，这是一个减小问题空间的通用方法</span></p><p><span>解决的问题是：现有的算法在查询实体很远时，会返回空结果，而新的方法可以减少失败的发生并且提供替代结果</span></p><p><span>怎么解决的：于从原始失败查询中删除最少数量的实体，以形成最⼤成功的子查询，从⽽最⼤限度地减少因松弛造成的结果质量损失</span></p><p><span>结果是什么：我们提出了一种最佳优先搜索算法，一种基于度数，另一种基于距离</span></p><p><span>该算法的意义在于，有现实效益，但是带来的后果是会频繁出现查询失败</span></p><p><span>平衡搜索性能与搜索质量</span></p><p><span>一种直接的方法是把约束扩大，表现不是很好</span></p><p><span>令一种方法是将原语义搜索的范围松弛，然后返回一个替代结果</span></p><p><span>Steiner tree</span></p><p><span>最小斯坦纳树允许在给定点外增加额外的点，使生成的最短网络开销最小</span></p><p><span>与现有的斯坦纳树算法的区别</span></p><p><span>第一个直观的方法：按顺序遍历子查询，对每个子查询使用现有的SA算法</span></p><p><span>第二个直观的方法：计算每对查询实体之间的距离，判定的条件，每对查询实体之间的距离不大于直径约束，这是必要条件，但不够充分</span></p><p><span>基本想法：对于D是偶数...</span></p><p><span>对于D是奇数...</span></p><p><span>算法优化</span></p><p><span>相比于原算法对整张图中每个点至多遍历一次，新算法独立地跑|Q|次</span></p><p><span>看起来慢了，实则不然</span></p><h2 id='magnetic-control-of-tokamak-plasmas-through-deep-reinforcement-learning'><span>Magnetic control of tokamak plasmas through deep reinforcement learning</span></h2><p><span>关键词：</span></p><ul><li><span>Tokamak 托卡马克(一种环状大电流的箍缩等离子体实验装置)</span></li></ul><p><span>Insight:</span></p><ul><li><span>深度强化学习</span></li><li><span>控制问题</span></li></ul></div></div>
 </body>
 </html>

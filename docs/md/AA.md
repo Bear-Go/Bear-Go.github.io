@@ -290,8 +290,4 @@ $Hamming\space distance$ or $distance$，令 x 和 y 为两个n元二进制组�
 
 为了完善整套编码体系，以下将介绍标准生成矩阵和canonical parity-check
 
-对于mxn的在$Z_{2}$上的矩阵，如果矩阵的最后m列构成了mxm的单位矩阵$I_m$，则这个矩阵称为**canonical parity-check matrix**，更具体地，$H=(A|I_m)$，相应地我们构造标准生成矩阵 $G=(\frac{I_{n-m}}{A})$，
-
-
-
-## 16.环
+对于mxn的在$Z_{2}$上的矩阵，如果矩阵的最后m列构成了mxm的单位矩阵$I_m$，则这个矩阵称为**canonical parity-check matrix**，更具体地，$H=(A|I_m)$，相应地我们构造标准生成矩阵 $G=(\frac{I_{n-m}}{A})$.
