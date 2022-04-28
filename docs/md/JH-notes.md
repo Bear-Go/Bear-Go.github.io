@@ -178,3 +178,53 @@ f(n)-approximation algorithm
 **优化问题的分类**
 
 近似的稳定性
+
+##### 4.3 算法设计
+
+###### Cover Problems, Greedy Method, and Relaxation to Linear Programming
+
+###### Maximum Cut Problem and Local Search
+
+###### Knapsack Problem and PTAS
+
+###### Traveling Salesperson Problem and Stability of Approximation
+
+###### 装箱问题，调度问题和对偶近似算法
+
+这节最终目标是求解MS.
+
+(i)设计装箱问题的一个dual polynomial-time approximation scheme(dual PTAS)
+
+问题描述：给定n个不同重量的物品和每个包裹的容量，将每个物品分配到一个包裹中，使得使用的包裹数量最少.
+
+BIN-P问题的输入是一个在$[0,1]$上的有理数向量$I=(r_1,r_2,...,r_n)$. 一个输入$I$的可行解是$\{0,1\}^n$向量组成的集合$S$，其中对于任意的$Y\in S$，
+$$
+Y^T\cdot(r_1,r_2,...,r_n)\le 1,
+$$
+并且
+$$
+\sum_{Y\in S}Y=(1,1,...,1).
+$$
+目标是使得$S$的势最小.
+
+我们定义一个函数$h:L_I\times\sum_{O}^*\to\mathbb{R}^{\ge 0}$如下，
+$$
+h(I,S)=\max\{\max\{Y^T\cdot(r_1,r_2,...,r_n|Y\in S)\}-1,0\}.
+$$
+第一步：使用动态规划的方法，设计一个针对包含常数个不同值的BIN-P问腿的输入实例的多项式算法DPB-P
+$$
+\text{Bin-P}(m_1,...,m_s)=1+\min_{x_1,...,x_s}\{\text{Bin-P}(m_1-x_1,...,m_s,x_s)|\sum_{i=1}^sx_iq_i\le1\}.
+$$
+
+
+第二步：应用上述算法来获得一个输入实例不包含非常小的值的BIN-P问题的h-dual PTAS
+
+想法是去近似每一个输入实例$I=(q_1,...,q_n)$通过将这n个q舍入到$s=\frac{\log_2{(1/\epsilon)}}{\epsilon}$个固定值的方式，然后使用DPB-P来求解近似完的输入.
+
+(i) r = cost(T1, ... ,Tr) = Bin-P(n1, ... ,ns):::; OptBin-p(I), where (Tl"'"  Tr) is the optimal solution for the input Round( 1) = (h, ... , Is, nl, ... , ns)  computed by BP-PTAe [Ti is the set of the multiplicatives of the indices  of the values packed in the ith bin], and
+
+(ii) for every j = 1, ... ,r, 2:aETJ qa :::; 1 + c.
+
+第三步：使用上述h-dual PTAS来设计一个针对普遍BIN-P的h-dual PTAS算法
+
+在上一步的基础上，把那些小于$\epsilon$的q值逐一塞进已经填装的包裹中，如若不够就再加一个包，重复至完成
