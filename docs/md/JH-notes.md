@@ -228,3 +228,68 @@ $$
 第三步：使用上述h-dual PTAS来设计一个针对普遍BIN-P的h-dual PTAS算法
 
 在上一步的基础上，把那些小于$\epsilon$的q值逐一塞进已经填装的包裹中，如若不够就再加一个包，重复至完成
+
+#### 5.随机算法
+
+###### 5.2 随机算法的分类与设计范式
+
+Let Random A (x) be the maximum number  of random bits used over all random runs (computations) of A on x. Then,  for every n E IN,  RandomA(n) = max {RandomA(x) I x is an input of size n}. 
+
+(1)伪随机的代价
+
+(2)去随机化的代价
+
+The  probability that A outputs y for an input x, Prob(A(x) = y), is the sum  of all ProbA,x(C), where C outputs y.
+$$
+Exp\text{-}Time_A(x)=E[Time]=\sum_{C}Prob_{A,x(C)}\cdot Time(C)
+$$
+
+$$
+Exp\text{-}Time_A(n)=\max\{Exp-Time_A(x)|x\text{ is an input of size }n\}
+$$
+
+
+
+Time A (x) = max { Time (C) I C is a run of A on x}
+
+TimeA(n) = max {TimeA(x) I x is an input of size n}
+
+allow infinite runs
+
+By contrast, infinite computations (runs) are acceptable for  probabilistic algorithms because an infinite run does not mean an infinite loop.
+
+LAS VEGAS ALGORITHMS
+
+Prob(A(x) = F(x)) = 1 
+
+e.x. 随机快排
+
+Prob(A(x) = F(x)) >=1/2
+
+one-way (communication) protocol
+
+ONE-SIDED-ERROR MONTE CARLO ALGORITHMS
+
+This type of randomized algorithm is considered for decision problems only. 
+
+TWO-SIDED-ERROR MONTE CARLO ALGORITHMS. 
+
+Prob(A(x) = F(x)) "2 + f.  
+
+The strategy is to let the algorithm run t times on the given input and to  take as the output the result which appears at least ft/2l times
+
+RANDOMIZED OPTIMIZATION ALGORITHMS. 
+
+but we simply  take the best one
+
+The first concept requires to achieve  an approximation ratio 8 with a probability of at least 1/2. The second concept  requires an upper bound 8 on the expected approximation ratio.
+
+FOILING AN ADVERSARY. 
+
+ABUNDANCE OF WITNESSES.
+
+FINGERPRINTING. 
+
+RANDOM SAMPLING.
+
+RELAXATION AND RANDOM ROUNDING. 
