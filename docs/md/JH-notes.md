@@ -233,13 +233,15 @@ $$
 
 ###### 5.2 随机算法的分类与设计范式
 
-Let Random A (x) be the maximum number  of random bits used over all random runs (computations) of A on x. Then,  for every n E IN,  RandomA(n) = max {RandomA(x) I x is an input of size n}. 
+对于算法$A$，输入$x$的所有随机运行中使用的最大随机比特数记作$Random_A(x)$，对于任意的输入大小$n$，记$Random_A(n)=\max \{Random_A(x)|x\text{ is an input of size }n\}$.
+
+上述量的意义：
 
 (1)伪随机的代价
 
 (2)去随机化的代价
 
-The  probability that A outputs y for an input x, Prob(A(x) = y), is the sum  of all ProbA,x(C), where C outputs y.
+对于输入$x$，算法$A$输出$y$的概率，记作$Prob(A(x)=y)$，大小上等于所有$Prob_{A,x(C)}$的和，其中$C$是输出$y$的运行.
 $$
 Exp\text{-}Time_A(x)=E[Time]=\sum_{C}Prob_{A,x(C)}\cdot Time(C)
 $$
@@ -248,43 +250,63 @@ $$
 Exp\text{-}Time_A(n)=\max\{Exp-Time_A(x)|x\text{ is an input of size }n\}
 $$
 
+$$
+Time_A(x)=\max\{Time(C)|C\text{ is a run of }A\text{ on }x\}
+$$
 
+$$
+Time_A(n)=\max\{Time_A(x)|x\text{ is an input of size }n\}
+$$
 
-Time A (x) = max { Time (C) I C is a run of A on x}
+随机算法运行无穷的运行，我们总能限制一个时间让循环终止。
 
-TimeA(n) = max {TimeA(x) I x is an input of size n}
+**LAS VEGAS ALGORITHMS**
 
-allow infinite runs
+Common point 从不输出错误解
 
-By contrast, infinite computations (runs) are acceptable for  probabilistic algorithms because an infinite run does not mean an infinite loop.
+定义1：
 
-LAS VEGAS ALGORITHMS
+$Prob(A(x) = F(x)) = 1$ 
 
-Prob(A(x) = F(x)) = 1 
+$e.x.$ 随机快排
 
-e.x. 随机快排
+复杂度一般讨论期望
 
-Prob(A(x) = F(x)) >=1/2
+定义2：
 
-one-way (communication) protocol
+$Prob(A(x) = F(x)) \ge 1/2$
 
-ONE-SIDED-ERROR MONTE CARLO ALGORITHMS
+复杂度一般讨论最差情况
 
-This type of randomized algorithm is considered for decision problems only. 
+**one-way (communication) protocol**
 
-TWO-SIDED-ERROR MONTE CARLO ALGORITHMS. 
+**ONE-SIDED-ERROR MONTE CARLO ALGORITHMS**
 
-Prob(A(x) = F(x)) "2 + f.  
+(i) $\text{for every }x\in L, Prob(A(x) = 1) \ge 1/2, \text{and}$  
 
-The strategy is to let the algorithm run t times on the given input and to  take as the output the result which appears at least ft/2l times
+(ii) $\text{for every }x\not\in L, Prob(A(x) = 0) = 1$ 
 
-RANDOMIZED OPTIMIZATION ALGORITHMS. 
+这种随机算法只能用来考虑决定问题(yes/no)
 
-but we simply  take the best one
+**TWO-SIDED-ERROR MONTE CARLO ALGORITHMS**
 
-The first concept requires to achieve  an approximation ratio 8 with a probability of at least 1/2. The second concept  requires an upper bound 8 on the expected approximation ratio.
+$Prob(A(x) = F(x)) \ge\frac{1}{2} + \epsilon$
 
-FOILING AN ADVERSARY. 
+策略就是让算法对给定的输入运行$t$次，然后选择那个出现频数大于$t/2$的输入作为结果
+
+**UNBOUNDED-ERROR MONTE CARLO ALGORITHMS**
+
+$Prob(A(x) = F(x))>\frac{1}{2}$
+
+**RANDOMIZED OPTIMIZATION ALGORITHMS**
+
+第一种需要实现近似比不超过$\delta$的概率至少1/2
+
+第二种需要实现近似比的期望不超过$\delta$
+
+**随机算法设计的范式**
+
+FOILING AN ADVERSARY.
 
 ABUNDANCE OF WITNESSES.
 
