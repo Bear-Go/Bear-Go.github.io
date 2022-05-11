@@ -231,7 +231,7 @@ $$
 
 #### 5.随机算法
 
-###### 5.2 随机算法的分类与设计范式
+##### 5.2 随机算法的分类与设计范式
 
 对于算法$A$，输入$x$的所有随机运行中使用的最大随机比特数记作$Random_A(x)$，对于任意的输入大小$n$，记$Random_A(n)=\max \{Random_A(x)|x\text{ is an input of size }n\}$.
 
@@ -315,3 +315,89 @@ FINGERPRINTING.
 RANDOM SAMPLING.
 
 RELAXATION AND RANDOM ROUNDING. 
+
+##### 5.3 随机算法的设计
+
+###### 5.3.1 介绍
+
+In Section 5.3.2 we present an efficient Las Vegas algorithm that finds a quadratic nonresidue mod p for any given prime p.
+
+The designed Las Vegas algorithm is based on the method of random sampling. 
+
+In Section 5.3.3 we present one of the most famous randomized algorithms - the Solovay-Strassen algorithm for primality testing.
+
+This algorithm is a one-sided Monte Carlo algorithm and it is based on the method of the abundance of witnesses. The whole design of this algorithm may be viewed as a search for a suitable notion of a witness for primality.
+
+(wait to be done)
+
+###### 5.3.2 Quadratic Residues, Random Sampling, and Las Vegas
+
+Remember that a is a quadratic residue (mod p) if there exists an x E such that x 2 = x· x = a. In the opposite case, a is a quadratic nonresidue (mod p).
+
+(A) For a given prime $p$ and an $a\in \mathbb{Z}_p$, it is possible to decide whether $a$ is a quadratic residue (mod $p$) in polynomial time.
+
+**Theorem 5.3.2.2 (Euler's Criterion).** For every a E LZp ,  (i) if a is a quadratic residue modulo p, then a(p-l)/2 == l(mod p), and  (ii) if a is a quadratic nonresidue modulo p, then a(p-l)/2 == -l(mod p). 
+
+(B) For every prime $p$, exactly half of the elements of $\mathbb{Z}_p$ are quadratic residues.
+
+**Theorem 5.3.2.3.** For every odd prime p, exactly half of the nonzero elements of Z_p are quadratic residues modulo p. 
+
+Algorithm 5.3.2.4. QUADRATIC NONRESIDUE  Input: A prime p. 
+
+Step 1: Choose randomly an a E {1, ... ,p-1} in the uniform way. 
+
+Step 2: Compute X := a(p-l)/2 mod p by the algorithm REPEATED SQUARING.  
+
+Step 3: if X = p - 1 then return a  else return "I was not successful in this attempt"   
+
+Output: a number a E {l, ... ,p - I} such that a is a quadratic nonresidue modulo p, if any. 
+
+(i) there are many objects with the given property relative to the cardinality of the  set of all objects considered,  
+
+(ii) for a given object, one can efficiently verify whether it has the required property  or not, and  
+
+(iii) the distribution of the "right" objects among all objects is unknown and cannot  be efficiently computed (or at least one does not know how to determine it  efficiently).
+
+###### 5.3.3 素性判定, Abundance of Witnesses,  and One-Sided-Error Monte Carlo
+
+**Theorem 5.3.3.1.** For every odd n such that (n - 1)/2 is odd (i.e., n ==  3(mod 4)) ,  (i) if n is a prime, then a(n-1)/2 mod n E {I, -I} for all a E {l, ... ,n - I},  (ii) if n is composite, then a(n-1)/2 mod n ¢:. {I, -I} for at least one half of  the a's from {I, 2, ... , n - I}.
+
+**Algorithm 5.3.3.5 (SSSA SIMPLIFIED SOLOVAy-STRASSEN ALGORITHM ).**  Input: An odd number n with odd (n - 1)/2.  Step 1: Choose uniformly an a E {I, 2, ... ,n - I} n-l  Step 2: Compute A:= a-2- mod n  Step 3: if A E {I, -I}  then return ("PRIME") {reject}  else return ("COMPOSITE") {accept}.
+
+There exist so-called Carmichael  numbers that are composite numbers n with the property  an- l == l(mod n) for all a E {l, 2, ... , n - I} with gcd(a, n) = 1.
+
+For any prime p > 2 and any integer a with gcd(a,p) = 1, the Legendre  symbol for a and p is  L [-'" J - { 1 if a is a quadratic residue mod p  eg p - -1 if a is a quadratic nonresidue mod p.
+
+**Definition 5.3.3.7 (Jacobi Symbol).** Let n = . ..... p71 be an odd  number for primes PI < P2 < ... < Pl and positive integers kl' k2, ... , kl. For  all positive integers a such that gcd(a, n) = 1, the Jacobi symbol of a and  n is defined by  1 k, 1 k,  Jac = II (Leg[£-J) = II (a(P,-1)/2 mod Pi).
+
+**Theorem 5.3.3.11.** For every odd n,  (i) ifn is a prime, then Jac == a(n-1)/2 (mod n) for all a E {1,2, ... ,nI}, (ii) ifn is composite, then Jac ;f:. a(n-i)/2 (mod n) for at least half of the  numbers a with gcd( a, n) = 1.
+
+**Algorithm 5.3.3.12.** SOLOVAy-STRASSEN ALGORITHM  Input: An odd number n.  Step 1: Choose a uniformly at random from {I, 2, ... , n - I}.  Step 2: Compute gcd(a, n).  Step 3: if gcd(a,n) =f. 1 then return ("COMPOSITE") {accept}.  Step 4: Compute Jac and a(n-I)/2 mod n.
+
+Let n be a composite odd number. Let n - 1 = s . 2m for an odd s and an  integer m 1. We say that a number a E {1, ... , n - 1} is a **root-witness of the compositeness of n** if  (1) an - 1 mod n i= 1, or  (2) there exists j E {a, 1, ... , m - 1}, such that  a s.2rn - J mod n = 1 and a s.2"'-J-l mod n 1:. {1, -1}.
+
+**Theorem 5.3.3.13.** Let n > 2 be an odd integer. 
+
+Then  (i) if n is a prime, then for all a E {1, ... , n - 1}, a is no root-witness of the  compositeness of n  {i. e., our definition of root-witnesses is a correct definition of witnesses  of the compositeness} ,  (ii) if n is composite, then at least half of the numbers a E {1, ... ,n - 1} are  root-witnesses of the compositeness of n  { i. e., there are many root-witnesses of the compositeness}.
+
+**Algorithm 5.3.3.14.** MILLER-RABIN ALGORITHM  
+
+Input: An odd number n. 
+
+Step 1: Choose a uniformly at random from {1,2, ... ,n -I}.  
+
+Step 2: Compute an - l mod n. 
+
+Step 3: if an - l mod n i:- 1 then  return ("COMPOSITE") -accept"  else begin  compute sand m such that n - 1 = s . 2m;  for i := 0 to m - 1 do  r[i] := as.2' mod n -by repeated squaring";  r[m] := an - l mod n;  if there exists j E {O, 1, ... ,m - I}, such that  r[m - j] = 1 and r[m - j -1] tJ. {I, -I},  then return ("COMPOSITE") -accept"  else return ("PRIME") -reject"  end
+
+**Theorem 5.3.3.15.** The MILLER-RABIN ALGORITHM is a polynomial-time  one-sided-error Monte Carlo algorithm for the recognition of the set of odd  composite numbers.
+
+**Algorithm 5.3.3.16.** PRIME GENERATION(l, k) (PG(l, k))
+
+Input: l, k.  
+
+Step 1: Set X := "still not found";  1:= 0  
+
+Step 2: while X = "still not found" and I < 212  do begin generate randomly a bit sequence al,"" al-2 and set  n = 21- 1 + ",1-2 a·2i + l' L..,,1.=1 'l. f  end
+
+Step 3: if 1= 212 output( "I did not find any prime"). 
