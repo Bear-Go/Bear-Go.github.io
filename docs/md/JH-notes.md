@@ -310,6 +310,8 @@ FOILING AN ADVERSARY.
 
 ABUNDANCE OF WITNESSES.
 
+witnesses 本质上就是解具有一个非解不具有的性质（或者反过来也行）
+
 FINGERPRINTING. 
 
 RANDOM SAMPLING.
@@ -330,13 +332,21 @@ This algorithm is a one-sided Monte Carlo algorithm and it is based on the metho
 
 (wait to be done)
 
-###### 5.3.2 Quadratic Residues, Random Sampling, and Las Vegas
+###### 5.3.2 二次剩余，随机采样, 与拉斯维加斯
 
-Remember that a is a quadratic residue (mod p) if there exists an x E such that x 2 = x· x = a. In the opposite case, a is a quadratic nonresidue (mod p).
+请记住，如果存在 $x\in\mathbb{Z}_p$ 使得 $x^2 = x· x = a$，则 $a$ 是二次剩余 (mod $p$)。 在相反的情况下，$a$ 是二次非剩余 (mod $p$).
 
-(A) For a given prime $p$ and an $a\in \mathbb{Z}_p$, it is possible to decide whether $a$ is a quadratic residue (mod $p$) in polynomial time.
+该算法的思想基于以下两个事实：
 
-**Theorem 5.3.2.2 (Euler's Criterion).** For every a E LZp ,  (i) if a is a quadratic residue modulo p, then a(p-l)/2 == l(mod p), and  (ii) if a is a quadratic nonresidue modulo p, then a(p-l)/2 == -l(mod p). 
+(A) 对于给定的素数 $p$ 和 $a\in \mathbb{Z}_p$，可以在多项式时间内确定 $a$ 是否是二次剩余 (mod $p$).
+
+由 **Theorem 5.3.2.2** 保证.
+
+**Theorem 5.3.2.2 (Euler's Criterion).** For every $a\in\mathbb{Z}_p$,  
+
+(i) 如果 $a$ 是模 $p$ 的二次剩余，则 $a^{(p-l)/2}\equiv1(\text{mod }p)$，并且
+
+(ii) 如果 $a$ 是模 $p$ 的二次非剩余，则 $a^{(p-l)/2}\equiv-1(\text{mod }p)$.
 
 (B) For every prime $p$, exactly half of the elements of $\mathbb{Z}_p$ are quadratic residues.
 
@@ -352,19 +362,23 @@ Step 3: if X = p - 1 then return a  else return "I was not successful in this at
 
 Output: a number a E {l, ... ,p - I} such that a is a quadratic nonresidue modulo p, if any. 
 
-(i) there are many objects with the given property relative to the cardinality of the  set of all objects considered,  
+(i) 相对于所考虑的所有对象集合的基数，有许多具有给定属性的对象，
 
-(ii) for a given object, one can efficiently verify whether it has the required property  or not, and  
+(ii) 对于给定的对象，可以有效地验证它是否具有所需的属性，并且
 
-(iii) the distribution of the "right" objects among all objects is unknown and cannot  be efficiently computed (or at least one does not know how to determine it  efficiently).
+(iii) 所有对象中“正确”对象的分布是未知的，无法有效计算（或者至少不知道如何有效地确定它）.
 
 ###### 5.3.3 素性判定, Abundance of Witnesses,  and One-Sided-Error Monte Carlo
 
-**Theorem 5.3.3.1.** For every odd n such that (n - 1)/2 is odd (i.e., n ==  3(mod 4)) ,  (i) if n is a prime, then a(n-1)/2 mod n E {I, -I} for all a E {l, ... ,n - I},  (ii) if n is composite, then a(n-1)/2 mod n ¢:. {I, -I} for at least one half of  the a's from {I, 2, ... , n - I}.
+**Theorem 5.3.3.1.** For every odd n such that $(n - 1)/2$ is odd (i.e., $n\equiv3(\text{mod }4)$),
+
+(i) 如果 $n$ 是素数，则 $a^{(n-1)/2}\text{ mod }n\in\{1,-1\}$ 对所有 $a\in\{1,.. .,n-1\}$,
+
+(ii) 如果 $n$ 是合数，那么 $a^{(n-1)/2}\text{ mod }n\not\in\{1,-1\}$ 对于至少一半的 $a$' s 来自 $\{1,2,...,n-1\}$。
 
 **Algorithm 5.3.3.5 (SSSA SIMPLIFIED SOLOVAy-STRASSEN ALGORITHM ).**  Input: An odd number n with odd (n - 1)/2.  Step 1: Choose uniformly an a E {I, 2, ... ,n - I} n-l  Step 2: Compute A:= a-2- mod n  Step 3: if A E {I, -I}  then return ("PRIME") {reject}  else return ("COMPOSITE") {accept}.
 
-There exist so-called Carmichael  numbers that are composite numbers n with the property  an- l == l(mod n) for all a E {l, 2, ... , n - I} with gcd(a, n) = 1.
+There exist so-called Carmichael numbers that are composite numbers n with the property $a^{n-1}\equiv1(\text{mod }n)\text{ for all }a\in\{1,2,... ,n-1\}\text{ with }\gcd(a,n)=1.$
 
 For any prime p > 2 and any integer a with gcd(a,p) = 1, the Legendre  symbol for a and p is  L [-'" J - { 1 if a is a quadratic residue mod p  eg p - -1 if a is a quadratic nonresidue mod p.
 
@@ -372,13 +386,25 @@ For any prime p > 2 and any integer a with gcd(a,p) = 1, the Legendre  symbol fo
 
 **Theorem 5.3.3.11.** For every odd n,  (i) ifn is a prime, then Jac == a(n-1)/2 (mod n) for all a E {1,2, ... ,nI}, (ii) ifn is composite, then Jac ;f:. a(n-i)/2 (mod n) for at least half of the  numbers a with gcd( a, n) = 1.
 
-**Algorithm 5.3.3.12.** SOLOVAy-STRASSEN ALGORITHM  Input: An odd number n.  Step 1: Choose a uniformly at random from {I, 2, ... , n - I}.  Step 2: Compute gcd(a, n).  Step 3: if gcd(a,n) =f. 1 then return ("COMPOSITE") {accept}.  Step 4: Compute Jac and a(n-I)/2 mod n.
+**Algorithm 5.3.3.12.** SOLOVAY-STRASSEN ALGORITHM  
+
+Input: An odd number n.  
+
+Step 1: Choose a uniformly at random from {I, 2, ... , n - I}.  
+
+Step 2: Compute gcd(a, n).  
+
+Step 3: if gcd(a,n) =f. 1 then return ("COMPOSITE") {accept}.  
+
+Step 4: Compute Jac and a(n-I)/2 mod n.
 
 Let n be a composite odd number. Let n - 1 = s . 2m for an odd s and an  integer m 1. We say that a number a E {1, ... , n - 1} is a **root-witness of the compositeness of n** if  (1) an - 1 mod n i= 1, or  (2) there exists j E {a, 1, ... , m - 1}, such that  a s.2rn - J mod n = 1 and a s.2"'-J-l mod n 1:. {1, -1}.
 
 **Theorem 5.3.3.13.** Let n > 2 be an odd integer. 
 
-Then  (i) if n is a prime, then for all a E {1, ... , n - 1}, a is no root-witness of the  compositeness of n  {i. e., our definition of root-witnesses is a correct definition of witnesses  of the compositeness} ,  (ii) if n is composite, then at least half of the numbers a E {1, ... ,n - 1} are  root-witnesses of the compositeness of n  { i. e., there are many root-witnesses of the compositeness}.
+Then  (i) if n is a prime, then for all a E {1, ... , n - 1}, a is no root-witness of the  compositeness of n  {i. e., our definition of root-witnesses is a correct definition of witnesses  of the compositeness} ,  
+
+(ii) if n is composite, then at least half of the numbers a E {1, ... ,n - 1} are  root-witnesses of the compositeness of n  { i. e., there are many root-witnesses of the compositeness}.
 
 **Algorithm 5.3.3.14.** MILLER-RABIN ALGORITHM  
 
@@ -391,6 +417,8 @@ Step 2: Compute an - l mod n.
 Step 3: if an - l mod n i:- 1 then  return ("COMPOSITE") -accept"  else begin  compute sand m such that n - 1 = s . 2m;  for i := 0 to m - 1 do  r[i] := as.2' mod n -by repeated squaring";  r[m] := an - l mod n;  if there exists j E {O, 1, ... ,m - I}, such that  r[m - j] = 1 and r[m - j -1] tJ. {I, -I},  then return ("COMPOSITE") -accept"  else return ("PRIME") -reject"  end
 
 **Theorem 5.3.3.15.** The MILLER-RABIN ALGORITHM is a polynomial-time  one-sided-error Monte Carlo algorithm for the recognition of the set of odd  composite numbers.
+
+问题：Generate a prime of the binary length $l$ for some given positive integer $l$.
 
 **Algorithm 5.3.3.16.** PRIME GENERATION(l, k) (PG(l, k))
 
