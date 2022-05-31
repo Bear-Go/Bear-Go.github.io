@@ -1,5 +1,3 @@
-
-
 ## 知识网
 
 maximum a posteriori policy optimization(MPO): actor-critic algorithm
@@ -43,7 +41,15 @@ sigmoid
 
 根据人反应的方式，比如利用神经网络来做“直觉”系统，用强化学习来做“思考”系统
 
+强化学习关键的要素是 交互？
+
 ## 其他
+
+海明威
+
+陀思妥耶夫斯基
+
+爱伦坡
 
 #define UNUSED(x) (void)(x) //秀啊
 
