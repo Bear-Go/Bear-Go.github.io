@@ -23,6 +23,8 @@ softplus
 
 sigmoid
 
+消融实验
+
 ## 疑问
 
 信息熵 对四大名著

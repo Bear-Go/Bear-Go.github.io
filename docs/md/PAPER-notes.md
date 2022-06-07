@@ -56,3 +56,9 @@ Insight:
 
 
 ## NetView: Towards on-demand network-wide telemetry in the data center
+
+difficulty:
+
+- On-demand telemetry 实时该边的遥感需求
+- Coverage 覆盖范围
+- Scalability 可扩展的（可以扩大的）
